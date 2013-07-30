@@ -35,9 +35,19 @@ public class CameraLeap : MonoBehaviour {
             // Check if the hand has any fingers
             Leap.FingerList fingers = hand.Fingers;
 			
-            if (!fingers.Empty)
+            if (!fingers.Empty && !frame.Hands[1].IsValid)
             {
 				Leap.Finger firstfinger = fingers[0];
+										
+				float moveInputX = firstfinger.TipVelocity.x /1000; 
+		        transform.position += new Vector3(moveInputX, 0, 0);
+				
+				float moveInputY = firstfinger.TipVelocity.y /1000; 
+		        transform.position += new Vector3(0, moveInputY, 0);
+			
+				float moveInputZ = firstfinger.TipVelocity.z /1000; 
+		        transform.position -= new Vector3(0, 0 , moveInputZ);
+					
                 // Calculate the hand's average finger tip position
                 Leap.Vector avgPos = Leap.Vector.Zero;
                 foreach (Leap.Finger finger in fingers)
@@ -48,6 +58,13 @@ public class CameraLeap : MonoBehaviour {
                 print("Hand has " + fingers.Count
                             + " fingers, average finger tip position: " + avgPos);
             }
+			
+			if (frame.Hands[1].IsValid){
+				Leap.Hand handSx = frame.Hands[1];
+				
+				if (handSx.Fingers.Count==4) transform.position = new Vector3(0,50,-50);
+				
+			}
 
             // Get the hand's sphere radius and palm position
             print("Hand sphere radius: " + hand.SphereRadius.ToString("n2")
