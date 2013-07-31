@@ -4,7 +4,6 @@ Leap Motion Hands Tracking
 **Prototype using Unity + C# + JavaScript + Leap Motion (picking + dynamic camera)**
 
 ![GitHub Logo](/Images/screen0.png)
-Format: ![Alt Text](url)
 
 NOTE: You need Unity 3D Pro to run this
 
