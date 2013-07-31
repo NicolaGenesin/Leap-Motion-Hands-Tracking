@@ -5,10 +5,8 @@ Leap Motion Hands Tracking
 
 ![GitHub Logo](/Images/screen0.png)
 
-NOTE: You need Unity 3D Pro to run this
-
 > 1. Clone it into local
-> 2. Open from folder YourFolder\Leap_Motion-master\Assets\Scenes\Gestures
+> 2. Open Unity file "Gestures" from folder YourFolder\Leap_Motion-master\Assets\Scenes\
 
 How to use it:
 
@@ -17,3 +15,4 @@ How to use it:
 
 If you want to pick up the sphere, just unCkick Camera Leap Script from MainCamera and activate Leap Manager into LeapController
 
+*NOTE: You need Unity 3D Pro to run this project*
