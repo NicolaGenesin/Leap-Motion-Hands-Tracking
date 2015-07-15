@@ -33,7 +33,7 @@ public class LeapFingerCollisionDispatcher : MonoBehaviour {
 	
 	void FixedUpdate()
 	{
-		if( gameObject.collider.enabled )
+		if( gameObject.GetComponent<Collider>().enabled )
 		{
 			Debug.DrawRay(transform.position, transform.forward, Color.green);
 			RaycastHit hit;

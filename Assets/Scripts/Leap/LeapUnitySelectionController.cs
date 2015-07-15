@@ -105,7 +105,7 @@ public class LeapUnitySelectionController : MonoBehaviour {
         
         //Remove fingers which have been disabled
         int index;
-        while( (index = m_Touching.FindIndex(i => i.collider && i.collider.enabled == false)) != -1 ) 
+        while( (index = m_Touching.FindIndex(i => i.GetComponent<Collider>() && i.GetComponent<Collider>().enabled == false)) != -1 ) 
         {
             m_Touching.RemoveAt(index);
             m_LastPos.RemoveAt(index);
@@ -201,10 +201,10 @@ public class LeapUnitySelectionController : MonoBehaviour {
     {
         if( m_FocusedObject != null )
         {
-            List<Material> materials = new List<Material>( m_FocusedObject.renderer.materials );
+            List<Material> materials = new List<Material>( m_FocusedObject.GetComponent<Renderer>().materials );
             Material removeMaterial = materials.Find( m => m.name == m_HighlightMaterial.name + " (Instance)" );
             materials.Remove(removeMaterial);
-            m_FocusedObject.renderer.materials = materials.ToArray();
+            m_FocusedObject.GetComponent<Renderer>().materials = materials.ToArray();
             Destroy(removeMaterial); //cleanup instanced material;
         }
         m_FocusedObject = null;
@@ -221,21 +221,21 @@ public class LeapUnitySelectionController : MonoBehaviour {
         m_FirstTouchedTime = Time.time;
         m_LastMovedTime = Time.time + kMinSelectionTime;
         //Add the new material, but set it as blank so it doesn't really show up.
-        List<Material> materials = new List<Material>( focus.renderer.materials );
+        List<Material> materials = new List<Material>( focus.GetComponent<Renderer>().materials );
         Material newMaterial = new Material(m_HighlightMaterial);
         newMaterial.color = new Color(0,0,0,0);
         materials.Add(newMaterial);
-        focus.renderer.materials = materials.ToArray();
+        focus.GetComponent<Renderer>().materials = materials.ToArray();
     }
     
     public void SetHighlightColor(Color c)
     {
         if( m_FocusedObject == true )
         {
-            Material[] materials = m_FocusedObject.renderer.materials;
+            Material[] materials = m_FocusedObject.GetComponent<Renderer>().materials;
             Material changeMat = Array.Find(materials, m => m.name == m_HighlightMaterial.name + " (Instance)" );
             changeMat.color = c;
-            m_FocusedObject.renderer.materials = materials;
+            m_FocusedObject.GetComponent<Renderer>().materials = materials;
         }
     }
     

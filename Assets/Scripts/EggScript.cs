@@ -5,7 +5,7 @@ public class EggScript : MonoBehaviour {
 
     void Awake()
     {
-        rigidbody.AddForce(new Vector3(0, -100, 0), ForceMode.Force);
+        GetComponent<Rigidbody>().AddForce(new Vector3(0, -100, 0), ForceMode.Force);
     }
 
     //Update is called by Unity every frame

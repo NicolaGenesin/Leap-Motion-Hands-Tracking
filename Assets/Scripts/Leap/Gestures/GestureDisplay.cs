@@ -33,7 +33,7 @@ public class GestureDisplay : MonoBehaviour {
 			}
 			
 			float decayLevel = Mathf.Lerp(1,0, (Time.time - stopTime)/decayTime);
-			gameObject.renderer.material.SetColor(
+			gameObject.GetComponent<Renderer>().material.SetColor(
 				"_Color",
 				new Color(color.r, color.g, color.b, decayLevel));
 			
@@ -43,7 +43,7 @@ public class GestureDisplay : MonoBehaviour {
 			}
 		}
 		else {
-			gameObject.renderer.material.SetColor(
+			gameObject.GetComponent<Renderer>().material.SetColor(
 				"_Color",
 				new Color(color.r, color.g, color.b, 1));
 		}
